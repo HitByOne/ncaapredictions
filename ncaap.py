@@ -1,14 +1,12 @@
-import streamlit as st
 import pandas as pd
+import streamlit as st
 
 # Set Streamlit to wide mode
 st.set_page_config(layout="wide")
 
-# Correct variable name for the NCAA sheet ID
-ncaa_sheet_id = '19_lirG8bfTvccuBbFxfeCuRywJA0LZY1jt7_umjUCRA'
-
-# Load data from Google Sheets directly
-ncaa_predictions = pd.read_csv(f"https://docs.google.com/spreadsheets/d/{ncaa_sheet_id}/export?format=csv")
+# Load the CSV file from the Google Drive link
+csv_url = "https://drive.google.com/uc?export=download&id=1-5ZUHFQ00xGSq5wXuzjLnKnGpAd8amWn"
+ncaa_predictions = pd.read_csv(csv_url)
 
 # Create a new column combining 'Away' and 'Home' teams
 ncaa_predictions['Away @ Home'] = ncaa_predictions['Away'] + ' @ ' + ncaa_predictions['Home']
